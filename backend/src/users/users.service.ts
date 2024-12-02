@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
 import { User } from './user.types';
+import * as bcrypt from 'bcrypt';
+const saltRounds = 10;
 
 @Injectable()
 export class UsersService {
@@ -15,6 +17,7 @@ export class UsersService {
     if (isMatchUser) {
       throw new Error('Miss');
     }
-    this.users.push({ id: uuid(), name, password });
+    const newPassword = bcrypt.hashSync(password, saltRounds);
+    this.users.push({ id: uuid(), name, password: newPassword });
   }
 }
