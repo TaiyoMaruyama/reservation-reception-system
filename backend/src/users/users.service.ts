@@ -14,7 +14,8 @@ export class UsersService {
 
   signUp(name: string, password: string) {
     const isMatchUser = this.users.find((user) => user.name === name);
-    if (!isMatchUser) {
+    // 既に入力されたユーザーが登録されている場合はエラーを返す。
+    if (isMatchUser) {
       throw new Error('Miss');
     }
     const newPassword = bcrypt.hashSync(password, saltRounds);
