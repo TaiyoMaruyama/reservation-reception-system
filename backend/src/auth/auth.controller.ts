@@ -8,6 +8,7 @@ export class AuthController {
   @HttpCode(200)
   @Post('login')
   signIn(@Body() signInDto: Record<string, any>) {
+    // 本来はトークンはこのように返却しない
     return this.authService.signIn(signInDto.name, signInDto.password);
   }
 
