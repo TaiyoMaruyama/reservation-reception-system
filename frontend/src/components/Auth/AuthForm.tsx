@@ -3,9 +3,11 @@ import { authConfig } from "../../const/auth";
 
 const AuthForm: React.FC<{
   id: "signin" | "signup";
-}> = ({ id }) => {
-  const { label, isForgotButton, changeButtonLabel, asItButtonLabel } =
-    authConfig[id];
+  onSwitchForm: () => void;
+  onSubmitForm: () => void;
+}> = ({ id, onSwitchForm, onSubmitForm }) => {
+  const { label, isForgotButton } = authConfig[id];
+
   return (
     <Box
       p={0}
@@ -25,8 +27,12 @@ const AuthForm: React.FC<{
         )}
       </VStack>
       <HStack justify="center" alignItems="center" gap={8}>
-        <Button variant="outlined">{changeButtonLabel}</Button>
-        <Button variant="contained">{asItButtonLabel}</Button>
+        <Button variant="outlined" onClick={onSwitchForm}>
+          {id === "signin" ? "新規登録" : "ログイン"}
+        </Button>
+        <Button variant="contained" onClick={onSubmitForm}>
+          {id === "signin" ? "ログイン" : "新規登録"}
+        </Button>
       </HStack>
     </Box>
   );

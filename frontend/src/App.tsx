@@ -1,10 +1,11 @@
-import { Button } from "@kuma-ui/core";
+import { Box } from "@kuma-ui/core";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <Button>demo</Button>
-    </div>
+    <Box h="calc(100vh - 50px)" pt={50}>
+      <Outlet />
+    </Box>
   );
 }
 
