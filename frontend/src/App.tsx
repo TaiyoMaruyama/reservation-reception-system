@@ -1,5 +1,11 @@
+import { Button } from "@kuma-ui/core";
+
 function App() {
-  return <div>top_page</div>;
+  return (
+    <div>
+      <Button>demo</Button>
+    </div>
+  );
 }
 
 export default App;
